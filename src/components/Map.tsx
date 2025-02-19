@@ -7,7 +7,7 @@ const Map = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
-  const locations = [
+  const locations: { name: string; coordinates: [number, number]; country: string }[] = [
     { name: "Abidjan", coordinates: [-4.0082, 5.3596], country: "Côte d'Ivoire" },
     { name: "Yamoussoukro", coordinates: [-5.2769, 6.8276], country: "Côte d'Ivoire" },
     { name: "Bouaké", coordinates: [-5.0338, 7.6906], country: "Côte d'Ivoire" },
@@ -25,7 +25,7 @@ const Map = () => {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/light-v11',
-      center: [-4.0082, 8.0000], // Centré sur la Côte d'Ivoire
+      center: [-4.0082, 8.0000] as [number, number],
       zoom: 5
     });
 

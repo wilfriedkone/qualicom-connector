@@ -57,7 +57,7 @@ const Header = () => {
               className="flex items-center text-gray-600 hover:text-primary-600 transition-colors"
             >
               <Phone className="h-4 w-4 mr-2" />
-              <span className="text-sm">+225 07 77 77 77</span>
+              <span className="text-sm">+225 07 59 99 60 00</span>
             </a>
             <a
               href="mailto:contact@qualicom.ci"
@@ -108,7 +108,7 @@ const Header = () => {
               className="flex items-center text-gray-600 hover:text-primary-600"
             >
               <Phone className="h-4 w-4 mr-2" />
-              <span className="text-sm">+225 07 77 77 77</span>
+              <span className="text-sm">+225 07 59 99 60 00</span>
             </a>
             <a
               href="mailto:contact@qualicom.ci"

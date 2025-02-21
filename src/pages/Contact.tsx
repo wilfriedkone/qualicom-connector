@@ -1,7 +1,7 @@
-
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, AlertCircle } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -21,9 +21,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Ici vous pouvez ajouter la logique d'envoi d'email
-      // Par exemple avec un service comme EmailJS, SendGrid, ou votre propre backend
-      console.log("Formulaire soumis:", formData);
+      const templateParams = {
+        to_email: "mwilfriedkone@gmail.com",
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        service: formData.service
+      };
+
+      await emailjs.send(
+        'service_8msz8d7', // Remplacez par votre Service ID
+        'template_9ixp89q', // Remplacez par votre Template ID
+        templateParams,
+        'HpyG_nRZ_D1lbROPL' // Remplacez par votre Public Key
+      );
       
       toast({
         title: "Message envoyé !",
@@ -41,6 +54,7 @@ const Contact = () => {
         service: "general"
       });
     } catch (error) {
+      console.error('Error sending email:', error);
       toast({
         title: "Erreur",
         description: "Une erreur est survenue lors de l'envoi du message.",
@@ -214,8 +228,8 @@ const Contact = () => {
                     <Phone className="h-6 w-6 text-primary-600 mt-1 mr-4" />
                     <div>
                       <p className="font-medium">Téléphone</p>
-                      <a href="tel:+22507777777" className="text-gray-600 hover:text-primary-600">
-                      +225 07 59 99 60 00
+                      <a href="tel:+22507599960" className="text-gray-600 hover:text-primary-600">
+                        +225 07 59 99 60 00
                       </a>
                     </div>
                   </div>

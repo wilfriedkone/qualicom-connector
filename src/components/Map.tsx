@@ -20,7 +20,7 @@ const Map = () => {
     if (!mapContainer.current) return;
 
     // Initialize map
-    mapboxgl.accessToken = 'VOTRE_TOKEN_MAPBOX';
+    mapboxgl.accessToken = 'pk.eyJ1IjoibXdpbGZyaWVka29uZSIsImEiOiJjbTdlbGg2MW8wN3hmMmpxdXRjaThnemN3In0.ka1kBErO-4NTNc48nHYfJg';
     
     map.current = new mapboxgl.Map({
       container: mapContainer.current,

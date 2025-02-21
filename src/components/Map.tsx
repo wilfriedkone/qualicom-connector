@@ -19,7 +19,6 @@ const Map = () => {
   useEffect(() => {
     if (!mapContainer.current) return;
 
-    // Initialize map
     mapboxgl.accessToken = 'pk.eyJ1IjoibXdpbGZyaWVka29uZSIsImEiOiJjbTdlbGg2MW8wN3hmMmpxdXRjaThnemN3In0.ka1kBErO-4NTNc48nHYfJg';
     
     map.current = new mapboxgl.Map({
@@ -29,12 +28,10 @@ const Map = () => {
       zoom: 5
     });
 
-    // Add navigation controls
     map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-    // Add markers for each location
     locations.forEach(location => {
-      const marker = new mapboxgl.Marker({ color: "#2563eb" })
+      const marker = new mapboxgl.Marker({ color: "#0F5132" }) // Changé en vert foncé
         .setLngLat(location.coordinates)
         .setPopup(
           new mapboxgl.Popup({ offset: 25 })
@@ -46,7 +43,6 @@ const Map = () => {
         .addTo(map.current!);
     });
 
-    // Cleanup
     return () => {
       map.current?.remove();
     };

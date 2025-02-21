@@ -26,17 +26,17 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#2563eb",
+          DEFAULT: "#0F5132", // Vert foncé luxueux
           foreground: "#ffffff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
+          100: "#E8F5E9", // Vert très clair
+          200: "#C8E6C9", // Vert clair
+          300: "#A5D6A7", // Vert moyen clair
+          400: "#81C784", // Vert moyen
+          500: "#4CAF50", // Vert standard
+          600: "#0F5132", // Vert foncé (notre couleur principale)
+          700: "#0B3E27", // Vert très foncé
+          800: "#072F1D", // Vert encore plus foncé
+          900: "#041E13", // Vert presque noir
         },
         secondary: {
           DEFAULT: "#64748b",

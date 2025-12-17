@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, AlertCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, AlertCircle, Upload, X } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -15,6 +16,17 @@ const Contact = () => {
     message: "",
     service: "general"
   });
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setFiles(prev => [...prev, ...newFiles]);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,6 +65,7 @@ const Contact = () => {
         message: "",
         service: "general"
       });
+      setFiles([]);
     } catch (error) {
       console.error('Error sending email:', error);
       toast({
@@ -193,6 +206,48 @@ const Contact = () => {
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-colors resize-none"
                     placeholder="Décrivez votre projet ou votre demande..."
                   />
+                </div>
+
+                <div>
+                  <label htmlFor="files" className="block text-sm font-medium text-gray-700 mb-2">
+                    Pièces jointes
+                  </label>
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-600 transition-colors cursor-pointer">
+                    <input
+                      type="file"
+                      id="files"
+                      multiple
+                      onChange={handleFileChange}
+                      className="hidden"
+                      accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.zip"
+                    />
+                    <label htmlFor="files" className="cursor-pointer">
+                      <Upload className="h-10 w-10 text-gray-400 mx-auto mb-3" />
+                      <p className="text-sm text-gray-600">
+                        Cliquez pour ajouter des fichiers
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        PDF, DOC, XLS, PNG, JPG, ZIP (max 10 Mo)
+                      </p>
+                    </label>
+                  </div>
+                  
+                  {files.length > 0 && (
+                    <div className="mt-3 space-y-2">
+                      {files.map((file, index) => (
+                        <div key={index} className="flex items-center justify-between bg-gray-100 px-3 py-2 rounded-lg">
+                          <span className="text-sm text-gray-700 truncate">{file.name}</span>
+                          <button
+                            type="button"
+                            onClick={() => removeFile(index)}
+                            className="text-gray-500 hover:text-red-500 transition-colors"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <button

@@ -1,6 +1,7 @@
 
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ShieldCheck, MapPin, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+
 
 const Index = () => {
   const services = [

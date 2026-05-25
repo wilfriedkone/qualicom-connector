@@ -39,8 +39,8 @@ export default {
           900: "#041E13", // Vert presque noir
         },
         secondary: {
-          DEFAULT: "#64748b",
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

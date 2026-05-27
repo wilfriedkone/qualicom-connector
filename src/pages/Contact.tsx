@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, AlertCircle, Upload, X } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -14,18 +14,18 @@ const Contact = () => {
     phone: "",
     subject: "",
     message: "",
-    service: "general"
+    service: "general",
   });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newFiles = Array.from(e.target.files);
-      setFiles(prev => [...prev, ...newFiles]);
+      setFiles((prev) => [...prev, ...newFiles]);
     }
   };
 
   const removeFile = (index: number) => {
-    setFiles(prev => prev.filter((_, i) => i !== index));
+    setFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,16 +40,16 @@ const Contact = () => {
         phone: formData.phone,
         subject: formData.subject,
         message: formData.message,
-        service: formData.service
+        service: formData.service,
       };
 
       await emailjs.send(
-        'service_8msz8d7', // Remplacez par votre Service ID
-        'template_9ixp89q', // Remplacez par votre Template ID
+        "service_8msz8d7", // Remplacez par votre Service ID
+        "template_9ixp89q", // Remplacez par votre Template ID
         templateParams,
-        'HpyG_nRZ_D1lbROPL' // Remplacez par votre Public Key
+        "HpyG_nRZ_D1lbROPL", // Remplacez par votre Public Key
       );
-      
+
       toast({
         title: "Message envoyé !",
         description: "Nous vous répondrons dans les plus brefs délais.",
@@ -63,26 +63,25 @@ const Contact = () => {
         phone: "",
         subject: "",
         message: "",
-        service: "general"
+        service: "general",
       });
       setFiles([]);
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Erreur EmailJS :", error);
       toast({
-        title: "Erreur",
-        description: "Une erreur est survenue lors de l'envoi du message.",
+        title: "Erreur lors de l'envoi",
+        description: "Le message n'a pas pu être envoyé. Vérifiez la configuration EmailJS.",
         variant: "destructive",
+        duration: 5000,
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -91,9 +90,7 @@ const Contact = () => {
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
-              Contactez-nous
-            </h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">Contactez-nous</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Une question ? Un projet ? N'hésitez pas à nous contacter. Notre équipe est là pour vous répondre.
             </p>
@@ -223,15 +220,11 @@ const Contact = () => {
                     />
                     <label htmlFor="files" className="cursor-pointer">
                       <Upload className="h-10 w-10 text-gray-400 mx-auto mb-3" />
-                      <p className="text-sm text-gray-600">
-                        Cliquez pour ajouter des fichiers
-                      </p>
-                      <p className="text-xs text-gray-400 mt-1">
-                        PDF, DOC, XLS, PNG, JPG, ZIP (max 10 Mo)
-                      </p>
+                      <p className="text-sm text-gray-600">Cliquez pour ajouter des fichiers</p>
+                      <p className="text-xs text-gray-400 mt-1">PDF, DOC, XLS, PNG, JPG, ZIP (max 10 Mo)</p>
                     </label>
                   </div>
-                  
+
                   {files.length > 0 && (
                     <div className="mt-3 space-y-2">
                       {files.map((file, index) => (
@@ -275,9 +268,7 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Nos coordonnées
-                </h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Nos coordonnées</h3>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <Phone className="h-6 w-6 text-primary-600 mt-1 mr-4" />
@@ -301,9 +292,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Nos bureaux
-                </h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Nos bureaux</h3>
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <MapPin className="h-6 w-6 text-primary-600 mt-1 mr-4" />
@@ -323,9 +312,7 @@ const Contact = () => {
               </div>
 
               <div className="bg-gray-100 p-6 rounded-xl">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Horaires d'ouverture
-                </h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Horaires d'ouverture</h3>
                 <div className="space-y-2 text-gray-600">
                   <p>Lundi - Vendredi : 8h00 - 18h00</p>
                   <p>Samedi : 8h00 - 12h00</p>

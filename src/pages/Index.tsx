@@ -18,10 +18,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { lazy, Suspense } from "react";
 import Reveal from "@/components/Reveal";
-
-const HeroNetwork = lazy(() => import("@/components/HeroNetwork"));
+import HeroNetwork from "@/components/HeroNetwork";
 
 
 const Index = () => {

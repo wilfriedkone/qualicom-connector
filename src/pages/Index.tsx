@@ -1,7 +1,6 @@
 
 import {
   ArrowRight,
-  Check,
   ChevronDown,
   ShieldCheck,
   MapPin,
@@ -18,6 +17,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 const Index = () => {
   const services = [

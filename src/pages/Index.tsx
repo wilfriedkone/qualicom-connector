@@ -168,20 +168,25 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mb-10">
-              <Link
-                to="/contact"
-                className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-lg text-base font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:bg-primary/90 transition-all"
-              >
-                Nous contacter
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center gap-2 bg-background/60 backdrop-blur-md text-foreground border border-border hover:border-primary/50 hover:bg-background px-7 py-3.5 rounded-lg text-base font-medium transition-all"
-              >
-                Voir nos services
-              </Link>
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-lg text-base font-medium glow-primary hover:bg-primary/90 transition-colors"
+                >
+                  Nous contacter
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center justify-center gap-2 bg-background/60 backdrop-blur-md text-foreground border border-border hover:border-primary/50 hover:bg-background px-7 py-3.5 rounded-lg text-base font-medium transition-colors"
+                >
+                  Voir nos services
+                </Link>
+              </motion.div>
             </div>
+
 
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">

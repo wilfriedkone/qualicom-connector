@@ -18,7 +18,11 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
 import Reveal from "@/components/Reveal";
+
+const HeroNetwork = lazy(() => import("@/components/HeroNetwork"));
+
 
 const Index = () => {
   const services = [
@@ -142,6 +146,26 @@ const Index = () => {
             backgroundSize: "48px 48px",
           }}
         />
+
+        {/* 3D network — desktop only, light & non-blocking */}
+        <div className="pointer-events-none absolute inset-0 z-10 hidden md:block opacity-70">
+          <Suspense fallback={null}>
+            <HeroNetwork />
+          </Suspense>
+        </div>
+
+        {/* Mobile fallback: subtle animated CSS dots */}
+        <div className="pointer-events-none absolute inset-0 z-10 md:hidden opacity-50">
+          <div
+            className="absolute inset-0 animate-pulse"
+            style={{
+              backgroundImage:
+                "radial-gradient(hsl(var(--primary) / 0.35) 1px, transparent 1.5px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+        </div>
+
 
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-4xl mx-auto text-center">

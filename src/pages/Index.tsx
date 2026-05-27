@@ -18,10 +18,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { lazy, Suspense } from "react";
 import Reveal from "@/components/Reveal";
-
-const HeroNetwork = lazy(() => import("@/components/HeroNetwork"));
+import HeroNetwork from "@/components/HeroNetwork";
 
 
 const Index = () => {
@@ -147,11 +145,9 @@ const Index = () => {
           }}
         />
 
-        {/* 3D network — desktop only, light & non-blocking */}
+        {/* Network animation — SVG, lightweight, no WebGL */}
         <div className="pointer-events-none absolute inset-0 z-10 hidden md:block opacity-70">
-          <Suspense fallback={null}>
-            <HeroNetwork />
-          </Suspense>
+          <HeroNetwork />
         </div>
 
         {/* Mobile fallback: subtle animated CSS dots */}

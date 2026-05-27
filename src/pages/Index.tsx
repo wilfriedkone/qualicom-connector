@@ -1,7 +1,6 @@
 
 import {
   ArrowRight,
-  Check,
   ChevronDown,
   ShieldCheck,
   MapPin,
@@ -18,6 +17,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 const Index = () => {
   const services = [
@@ -167,20 +168,25 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mb-10">
-              <Link
-                to="/contact"
-                className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-lg text-base font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:bg-primary/90 transition-all"
-              >
-                Nous contacter
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center gap-2 bg-background/60 backdrop-blur-md text-foreground border border-border hover:border-primary/50 hover:bg-background px-7 py-3.5 rounded-lg text-base font-medium transition-all"
-              >
-                Voir nos services
-              </Link>
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-lg text-base font-medium glow-primary hover:bg-primary/90 transition-colors"
+                >
+                  Nous contacter
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center justify-center gap-2 bg-background/60 backdrop-blur-md text-foreground border border-border hover:border-primary/50 hover:bg-background px-7 py-3.5 rounded-lg text-base font-medium transition-colors"
+                >
+                  Voir nos services
+                </Link>
+              </motion.div>
             </div>
+
 
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -210,10 +216,10 @@ const Index = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,hsl(var(--primary-foreground)/0.12),transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {stats.map((s) => {
+            {stats.map((s, i) => {
               const Icon = s.icon;
               return (
-                <div key={s.label} className="text-center md:text-left">
+                <Reveal key={s.label} delay={i * 0.08} className="text-center md:text-left">
                   <Icon className="h-6 w-6 mb-3 mx-auto md:mx-0 opacity-80" />
                   <div className="text-3xl md:text-4xl font-bold tracking-tight">
                     {s.value}
@@ -221,52 +227,57 @@ const Index = () => {
                   <div className="text-sm md:text-base opacity-80 mt-1">
                     {s.label}
                   </div>
-                </div>
+                </Reveal>
               );
             })}
           </div>
+
         </div>
       </section>
 
       {/* Services Section */}
       <section className="py-24 bg-secondary/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <Reveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Nos services
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Découvrez notre gamme complète de services professionnels
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="bg-card p-8 rounded-xl border border-border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
-              >
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-6">{service.description}</p>
-                <Link
-                  to="/services"
-                  className="inline-flex items-center text-primary hover:text-primary/80 font-medium"
+            {services.map((service, i) => (
+              <Reveal key={service.title} delay={i * 0.08}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="h-full bg-card p-8 rounded-xl border border-border shadow-sm hover:shadow-lg hover:border-primary/30 transition-shadow"
                 >
-                  En savoir plus
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6">{service.description}</p>
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center text-primary hover:text-primary/80 font-medium group"
+                  >
+                    En savoir plus
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </motion.div>
+              </Reveal>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* Process Section */}
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
+          <Reveal className="text-center mb-16 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-accent text-accent-foreground text-xs font-medium uppercase tracking-wider">
               Notre méthode
             </div>
@@ -276,32 +287,36 @@ const Index = () => {
             <p className="text-lg text-muted-foreground">
               De la première discussion à la livraison, nous gardons le cap sur vos objectifs.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative">
             {process.map((p, i) => {
               const Icon = p.icon;
               return (
-                <div
-                  key={p.step}
-                  className="relative bg-card rounded-2xl p-8 border border-border hover:border-primary/40 transition-colors"
-                >
-                  <div className="absolute -top-3 -left-3 h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold shadow-md">
-                    {p.step}
-                  </div>
-                  <div className="h-12 w-12 rounded-xl bg-accent text-primary flex items-center justify-center mb-5">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {p.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {p.description}
-                  </p>
-                </div>
+                <Reveal key={p.step} delay={i * 0.12}>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="relative h-full bg-card rounded-2xl p-8 border border-border hover:border-primary/40 hover:shadow-lg transition-shadow"
+                  >
+                    <div className="absolute -top-3 -left-3 h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold glow-primary-soft">
+                      {p.step}
+                    </div>
+                    <div className="h-12 w-12 rounded-xl bg-accent text-primary flex items-center justify-center mb-5">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      {p.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {p.description}
+                    </p>
+                  </motion.div>
+                </Reveal>
               );
             })}
           </div>
+
         </div>
       </section>
 
@@ -309,7 +324,7 @@ const Index = () => {
       <section className="py-24 bg-secondary/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
+            <Reveal>
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-accent text-accent-foreground text-xs font-medium uppercase tracking-wider">
                 Pourquoi QUALICOM
               </div>
@@ -322,10 +337,10 @@ const Index = () => {
                 des délais.
               </p>
               <ul className="space-y-5">
-                {features.map((f) => {
+                {features.map((f, i) => {
                   const Icon = f.icon;
                   return (
-                    <li key={f.title} className="flex gap-4">
+                    <Reveal key={f.title} delay={0.1 + i * 0.08} as="li" className="flex gap-4">
                       <span className="flex-shrink-0 h-10 w-10 rounded-lg bg-accent text-primary flex items-center justify-center">
                         <Icon className="h-5 w-5" />
                       </span>
@@ -337,44 +352,49 @@ const Index = () => {
                           {f.description}
                         </p>
                       </div>
-                    </li>
+                    </Reveal>
                   );
                 })}
               </ul>
-            </div>
-            <div className="relative">
+            </Reveal>
+            <Reveal delay={0.15} className="relative">
               <img
                 src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e"
                 alt="QUALICOM Features"
-                className="rounded-xl shadow-xl relative z-10"
+                className="rounded-xl shadow-xl relative z-10 glow-primary-soft"
               />
               <div className="absolute inset-0 border-2 border-primary rounded-xl transform translate-x-4 translate-y-4" />
-            </div>
+            </Reveal>
           </div>
+
         </div>
       </section>
 
       {/* References / Clients */}
       <section className="py-20 bg-background border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <Reveal className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
               Ils nous font confiance
             </h2>
             <p className="text-muted-foreground">
               Des entreprises et institutions qui s'appuient sur notre expertise.
             </p>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
-            {clients.map((c) => (
-              <div
-                key={c}
-                className="h-20 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground font-semibold tracking-wide hover:border-primary/40 hover:text-foreground transition-colors"
-              >
-                {c}
-              </div>
+            {clients.map((c, i) => (
+              <Reveal key={c} delay={i * 0.05}>
+                <motion.div
+                  whileHover={{ y: -3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="h-20 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground font-semibold tracking-wide hover:border-primary/40 hover:text-foreground transition-colors"
+                >
+                  {c}
+                </motion.div>
+              </Reveal>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -382,21 +402,30 @@ const Index = () => {
       <section className="relative bg-primary py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-foreground)/0.12),transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-5">
-            Prêt à démarrer votre projet ?
-          </h2>
-          <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Contactez-nous dès aujourd'hui pour discuter de vos besoins et
-            obtenir un devis personnalisé.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-background text-primary px-8 py-4 rounded-lg text-base md:text-lg font-medium hover:bg-background/90 transition-colors shadow-lg"
-          >
-            Demander un devis
-            <ArrowRight className="h-5 w-5" />
-          </Link>
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-5">
+              Prêt à démarrer votre projet ?
+            </h2>
+            <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+              Contactez-nous dès aujourd'hui pour discuter de vos besoins et
+              obtenir un devis personnalisé.
+            </p>
+            <motion.div
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-block"
+            >
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-background text-primary px-8 py-4 rounded-lg text-base md:text-lg font-medium hover:bg-background/90 transition-colors shadow-xl group"
+              >
+                Demander un devis
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+          </Reveal>
         </div>
+
       </section>
     </div>
   );

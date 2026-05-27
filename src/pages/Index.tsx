@@ -145,11 +145,9 @@ const Index = () => {
           }}
         />
 
-        {/* 3D network — desktop only, light & non-blocking */}
+        {/* Network animation — SVG, lightweight, no WebGL */}
         <div className="pointer-events-none absolute inset-0 z-10 hidden md:block opacity-70">
-          <Suspense fallback={null}>
-            <HeroNetwork />
-          </Suspense>
+          <HeroNetwork />
         </div>
 
         {/* Mobile fallback: subtle animated CSS dots */}

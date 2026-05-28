@@ -1,69 +1,43 @@
-# Welcome to your Lovable project
+# QUALICOM Website
 
-## Project info
+Site vitrine professionnel développé pour présenter les services de QUALICOM, faciliter la prise de contact et préparer une mise en ligne avec un nom de domaine officiel.
 
-**URL**: https://lovable.dev/projects/fe16fb33-dca1-4011-be17-ae17ab55e6cf
+Le projet est basé sur une stack moderne orientée frontend, avec une interface responsive, une identité visuelle professionnelle et un formulaire de contact par email.
 
-## How can I edit this code?
+## Objectif du projet
 
-There are several ways of editing your application.
+Ce site a pour objectif de présenter l’entreprise QUALICOM, ses services, ses domaines d’intervention et ses moyens de contact.
 
-**Use Lovable**
+Il permet notamment de :
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fe16fb33-dca1-4011-be17-ae17ab55e6cf) and start prompting.
+- présenter clairement l’activité de l’entreprise ;
+- mettre en avant les services proposés ;
+- offrir une expérience utilisateur moderne sur desktop, tablette et mobile ;
+- faciliter la prise de contact via un formulaire ;
+- préparer un déploiement en production avec un nom de domaine personnalisé.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technologies utilisées
 
-**Use your preferred IDE**
+Le projet utilise principalement :
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
 - React
-- shadcn-ui
+- TypeScript
+- Vite
 - Tailwind CSS
+- shadcn/ui
+- lucide-react
+- EmailJS
+  
+## Les éléments suivants doivent être configurés :
+Service ID
+Template ID
+Public Key
+Email destinataire
 
-## How can I deploy this project?
+## Prérequis
 
-Simply open [Lovable](https://lovable.dev/projects/fe16fb33-dca1-4011-be17-ae17ab55e6cf) and click on Share -> Publish.
+Avant de lancer le projet, il faut avoir installé :
 
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+```bash
+node -v
+npm -v 

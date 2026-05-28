@@ -44,8 +44,8 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        "service_8msz8d7", // Remplacez par votre Service ID
-        "template_9ixp89q", // Remplacez par votre Template ID
+        "service_01wxnip", // Remplacez par votre Service ID
+        "template_td3ndr4", // Remplacez par votre Template ID
         templateParams,
         "HpyG_nRZ_D1lbROPL", // Remplacez par votre Public Key
       );

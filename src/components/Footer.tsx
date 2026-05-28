@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 
@@ -9,15 +8,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white">QUALICOM</h3>
-            <p className="text-sm leading-relaxed">
-              Intégrateur de solutions informatiques, télécoms et second œuvre
-            </p>
+            <h3 className="text-2xl font-bold text-white">QUALICOM-CI</h3>
+            <p className="text-sm leading-relaxed">Intégrateur de solutions informatiques, télécoms et second œuvre</p>
             <div className="space-y-2">
-              <a
-                href="tel:+22507777777"
-                className="flex items-center text-gray-400 hover:text-white transition-colors"
-              >
+              <a href="tel:+22507777777" className="flex items-center text-gray-400 hover:text-white transition-colors">
                 <Phone className="h-4 w-4 mr-2" />
                 <span className="text-sm">+225 07 59 99 60 00</span>
               </a>
@@ -36,34 +30,22 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Liens rapides</h4>
             <ul className="space-y-2">
               <li>
-                <Link
-                  to="/"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link to="/" className="text-gray-400 hover:text-white transition-colors">
                   Accueil
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/services"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link to="/services" className="text-gray-400 hover:text-white transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/projects"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link to="/projects" className="text-gray-400 hover:text-white transition-colors">
                   Réalisations
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/contact"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
                   Contact
                 </Link>
               </li>
@@ -105,13 +87,10 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
-          <p>© 2024 QUALICOM. Tous droits réservés.</p>
+          <p>© 2024 QUALICOM-CI. Tous droits réservés.</p>
           <p className="mt-2">
             Développé par{" "}
-            <a
-              href="#"
-              className="text-primary-400 hover:text-primary-300 transition-colors"
-            >
+            <a href="#" className="text-primary-400 hover:text-primary-300 transition-colors">
               Wilfried KONE
             </a>
           </p>

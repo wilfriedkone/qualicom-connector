@@ -47,7 +47,7 @@ const Contact = () => {
         "service_01wxnip", // Remplacez par votre Service ID
         "template_td3ndr4", // Remplacez par votre Template ID
         templateParams,
-        "HpyG_nRZ_D1lbROPL", // Remplacez par votre Public Key
+        "3yy10TausB584t6c3", // Remplacez par votre Public Key
       );
 
       toast({

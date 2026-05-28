@@ -45,7 +45,7 @@ const Contact = () => {
 
       console.log("Params envoyés à EmailJS :", templateParams);
 
-      const response = await emailjs.send("TON_SERVICE_ID", "TON_TEMPLATE_ID", templateParams, "TA_PUBLIC_KEY");
+      const response = await emailjs.send("service_01wxnip", "template_td3ndr4", templateParams, "3yy10TausB584t6c3");
 
       console.log("Réponse EmailJS :", response);
 

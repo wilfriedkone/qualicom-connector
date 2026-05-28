@@ -35,20 +35,19 @@ const Contact = () => {
     try {
       const templateParams = {
         to_email: "mwilfriedkone@gmail.com",
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        subject: formData.subject,
-        message: formData.message,
-        service: formData.service,
+        from_name: formData.name || "Non renseigné",
+        from_email: formData.email || "Non renseigné",
+        phone: formData.phone || "Non renseigné",
+        subject: formData.subject || "Demande de contact",
+        message: formData.message || "Aucun message",
+        service: formData.service || "Non précisé",
       };
 
-      await emailjs.send(
-        "service_01wxnip", // Remplacez par votre Service ID
-        "template_td3ndr4", // Remplacez par votre Template ID
-        templateParams,
-        "3yy10TausB584t6c3", // Remplacez par votre Public Key
-      );
+      console.log("Params envoyés à EmailJS :", templateParams);
+
+      const response = await emailjs.send("TON_SERVICE_ID", "TON_TEMPLATE_ID", templateParams, "TA_PUBLIC_KEY");
+
+      console.log("Réponse EmailJS :", response);
 
       toast({
         title: "Message envoyé !",
@@ -56,23 +55,22 @@ const Contact = () => {
         duration: 5000,
       });
 
-      // Réinitialiser le formulaire
       setFormData({
         name: "",
         email: "",
         phone: "",
         subject: "",
         message: "",
-        service: "general",
+        service: "",
       });
-      setFiles([]);
-    } catch (error) {
-      console.error("Erreur EmailJS :", error);
+    } catch (error: any) {
+      console.error("Erreur EmailJS complète :", error);
+
       toast({
-        title: "Erreur lors de l'envoi",
-        description: "Le message n'a pas pu être envoyé. Vérifiez la configuration EmailJS.",
+        title: "Erreur EmailJS",
+        description: error?.text || error?.message || "Erreur inconnue. Vérifiez votre configuration EmailJS.",
         variant: "destructive",
-        duration: 5000,
+        duration: 8000,
       });
     } finally {
       setIsSubmitting(false);

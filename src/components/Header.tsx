@@ -43,9 +43,7 @@ const Header = () => {
               Q
               <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-primary/30 blur-[2px]" />
             </span>
-            <span className="text-lg md:text-xl font-bold tracking-tight text-foreground">
-              QUALICOM
-            </span>
+            <span className="text-lg md:text-xl font-bold tracking-tight text-foreground">QUALICOM-CI</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,15 +55,11 @@ const Header = () => {
                   key={link.name}
                   to={link.path}
                   className={`relative px-3 py-2 text-sm font-medium transition-colors rounded-md ${
-                    active
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+                    active ? "text-primary" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {link.name}
-                  {active && (
-                    <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-primary" />
-                  )}
+                  {active && <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-primary" />}
                 </Link>
               );
             })}
@@ -108,9 +102,7 @@ const Header = () => {
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
-                  active
-                    ? "bg-accent text-primary"
-                    : "text-foreground hover:bg-accent/60"
+                  active ? "bg-accent text-primary" : "text-foreground hover:bg-accent/60"
                 }`}
               >
                 {link.name}
